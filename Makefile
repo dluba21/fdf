@@ -1,4 +1,4 @@
-FRAMEWORKS=-framework OpenGL -framework AppKit -L/usr/lib -lmlx
+FRAMEWORKS=-framework OpenGL -framework AppKit
 FLAGS=-Werror -Wextra -Wall
 NAME=fdf
 SRCS=*.c
@@ -9,15 +9,17 @@ all: $(NAME)
 
 $(NAME): $(HEADER)
 	make -C libft/
-	cc $(SRCS) -o $(NAME) $(FLAGS) -Imlx $(INCLUDES) $(FRAMEWORKS)
+	make -C minilibx_macos/
+	cc $(SRCS) -o $(NAME) $(FLAGS) minilibx_macos/libmlx.a $(INCLUDES) $(FRAMEWORKS)
 
 clean:
 	@make -C libft/ clean
+	@make -C minilibx_macos/ clean
 
 fclean: clean
 	@rm -rf $(NAME)
 	@make -C libft/ fclean
-
+	
 re: fclean all
 
 .PHONY: all clean fclean re bonus

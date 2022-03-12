@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <sys/types.h>
-# include <mlx.h>
+# include "minilibx_macos/mlx.h"
 # define RED_CHROMA 0
 # define GREEN_CHROMA 255
 # define BLUE_CHROMA 255
